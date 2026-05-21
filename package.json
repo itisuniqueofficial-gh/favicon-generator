@@ -1,0 +1,1 @@
+{"name":"favicon-generator","version":"1.0.0","private":true,"type":"module","description":"Fully static browser-only favicon generator for Cloudflare Pages.","scripts":{"build":"node scripts/build.mjs","check":"npm run build"},"dependencies":{},"devDependencies":{},"engines":{"node":">=18"}}

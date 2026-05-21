@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Advanced Static Favicon Generator - ICO, App Icons and PWA Icons</title>
+    <meta name="description" content="Generate favicon.ico, PNG favicons, Apple touch icons, Android icons, Microsoft tiles, social preview images, manifests and embed snippets directly in your browser.">
+    <link rel="canonical" href="https://example.com/">
+    <meta name="robots" content="index,follow">
+    <meta name="theme-color" content="#0f172a">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Advanced Static Favicon Generator">
+    <meta property="og:description" content="Create a complete static favicon package in your browser with no uploads and no backend.">
+    <meta property="og:image" content="/assets/images/og-image.svg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Advanced Static Favicon Generator">
+    <meta name="twitter:description" content="Generate ICO, app icons, PWA icons and snippets locally.">
+    <meta name="twitter:image" content="/assets/images/og-image.svg">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Advanced Static Favicon Generator","applicationCategory":"DesignApplication","operatingSystem":"Any","description":"Generate favicon and app icon packages locally in the browser.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://example.com/"},{"@type":"ListItem","position":2,"name":"Favicon Generator","item":"https://example.com/"}]}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are uploaded images sent to a server?","acceptedAnswer":{"@type":"Answer","text":"No. Images are processed locally in the browser."}},{"@type":"Question","name":"Can this run on Cloudflare Pages?","acceptedAnswer":{"@type":"Answer","text":"Yes. It is fully static and deploys with an optional build step."}}]}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to tool</a>
+    <header class="site-header">
+      <div class="container header-grid">
+        <a class="brand" href="/" aria-label="Favicon Generator home"><span class="brand-mark"><i class="fa-solid fa-icons" aria-hidden="true"></i></span><span><strong>Favicon Generator</strong><small>Static browser icon toolkit</small></span></a>
+        <p class="header-copy">Generate complete favicon packages privately with no server upload.</p>
+        <div class="header-actions"><button id="installButton" class="btn" type="button" hidden>Install</button><button id="themeToggle" class="btn" type="button" aria-label="Toggle dark mode"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i> Theme</button></div>
+      </div>
+    </header>
+    <main id="main" class="app-shell">
+      <section class="hero card" aria-labelledby="title">
+        <p class="eyebrow">Cloudflare Pages ready</p>
+        <h1 id="title">Advanced static favicon generator for websites, apps and PWAs.</h1>
+        <p>Upload, paste or pick an image. Generate ICO, PNG, Apple, Android, Windows, PWA, Open Graph and Twitter assets directly in the browser.</p>
+      </section>
+
+      <section class="workflow card" aria-label="How it works">
+        <ol><li><strong>1. Upload image</strong><span>Drop, click, paste or pick a photo.</span></li><li><strong>2. Adjust icon</strong><span>Choose fit, padding, background and corners.</span></li><li><strong>3. Preview results</strong><span>Check browser, mobile, tile and PWA previews.</span></li><li><strong>4. Generate package</strong><span>Create all favicon files in the browser.</span></li><li><strong>5. Download files</strong><span>Save ZIP or individual icons.</span></li></ol>
+      </section>
+
+      <section class="tool-layout">
+        <div class="tool-main stack">
+          <section class="card upload-card" aria-labelledby="upload-title">
+            <div class="card-header"><h2 id="upload-title" class="card-title">1. Upload</h2><p class="card-text">Start with a square image when possible. Your file stays private in this browser.</p></div>
+            <div id="dropZone" class="upload-box drop-zone" tabindex="0" role="button" aria-describedby="upload-help">
+              <input id="fileInput" class="sr-only" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml" capture="environment">
+              <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+              <strong>Drop, click, use camera picker or paste an image</strong>
+              <span id="upload-help">PNG, JPG, JPEG, WEBP and SVG where supported. Max 10 MB.</span>
+            </div>
+            <p id="statusMessage" class="status" aria-live="polite">Upload an image first to generate favicons.</p>
+            <p class="file-name">Current file: <span id="fileName">None</span></p>
+          </section>
+
+          <section class="card preview-card" aria-labelledby="preview-title">
+            <div class="card-header"><h2 id="preview-title" class="card-title">3. Preview</h2><p class="card-text">These previews update as you adjust the editor controls.</p></div>
+            <div class="preview-grid">
+              <article class="preview-card-item"><span>Browser tab</span><canvas id="browserPreview" width="64" height="64"></canvas></article>
+              <article class="preview-card-item"><span>iPhone home</span><canvas id="iosPreview" width="96" height="96"></canvas></article>
+              <article class="preview-card-item"><span>Android launcher</span><canvas id="androidPreview" width="96" height="96"></canvas></article>
+              <article class="preview-card-item"><span>Windows tile</span><canvas id="windowsPreview" width="120" height="120"></canvas></article>
+              <article class="preview-card-item"><span>PWA icon</span><canvas id="pwaPreview" width="120" height="120"></canvas></article>
+            </div>
+          </section>
+
+          <section class="card files-card" aria-labelledby="output-title">
+            <div class="card-header section-head"><div><h2 id="output-title" class="card-title">Files</h2><p class="card-text">Generated files appear here with size, dimensions and individual download actions.</p></div><span id="fileCount" class="badge">0 files</span></div>
+            <div class="progress"><span id="progressLabel">Idle</span><span id="progressValue">0%</span><div><i id="progressBar"></i></div></div>
+            <div id="outputRows" class="files-grid" aria-live="polite"></div>
+          </section>
+
+          <section class="card snippets-card" aria-labelledby="code-title">
+            <div class="card-header"><h2 id="code-title" class="card-title">Code</h2><p class="card-text">Copy these snippets into your site head or manifest file after uploading the generated favicon folder.</p></div>
+            <div class="code-grid"><label>HTML favicon code<textarea id="htmlCode" class="snippet-box" readonly></textarea><button class="btn" data-copy="#htmlCode" type="button">Copy HTML</button></label><label>Manifest code<textarea id="manifestCode" class="snippet-box" readonly></textarea><button class="btn" data-copy="#manifestCode" type="button">Copy Manifest</button></label></div>
+          </section>
+        </div>
+
+        <aside class="tool-sidebar">
+          <div class="sidebar-inner">
+            <section class="card editor-card" aria-labelledby="editor-title">
+              <div class="card-header"><h2 id="editor-title" class="card-title">2. Edit</h2><p class="card-text">Tune how the source image is drawn into every icon size.</p></div>
+              <div class="editor-preview"><img id="sourcePreview" alt="Uploaded source preview" hidden></div>
+              <div class="control-grid form-grid">
+                <div class="control-row"><label for="fitMode">Fit mode</label><select id="fitMode"><option value="contain">Contain</option><option value="cover">Cover</option><option value="center">Center crop</option></select></div>
+                <div class="control-row"><label for="backgroundColor">Background color</label><input id="backgroundColor" type="color" value="#ffffff"></div>
+                <label class="check control-row"><input id="transparentOutput" type="checkbox" checked> Keep transparency</label>
+                <div class="control-row"><label for="paddingRange">Safe padding <output id="paddingOutput">12%</output></label><input id="paddingRange" type="range" min="0" max="35" value="12"></div>
+                <div class="control-row"><label for="radiusRange">Rounded corners <output id="radiusOutput">0%</output></label><input id="radiusRange" type="range" min="0" max="50" value="0"></div>
+                <button id="resetButton" class="btn" type="button">Reset</button>
+              </div>
+              <dl id="qualityGrid" class="quality-grid" aria-live="polite"></dl>
+            </section>
+
+            <section class="card download-card" aria-labelledby="download-title">
+              <div class="card-header"><h2 id="download-title" class="card-title">4. Generate</h2><p class="card-text">Generate icons first. ZIP download unlocks after the package is ready.</p></div>
+              <div class="download-actions"><button id="generateButton" class="btn btn-primary wide" type="button" disabled>Generate Icons</button><button id="downloadZipButton" class="btn btn-primary wide" type="button" disabled>Download ZIP</button><button id="downloadSelectedButton" class="btn" type="button" disabled>Download Selected</button><button id="regenerateButton" class="btn" type="button" disabled>Regenerate</button><button id="clearButton" class="btn wide" type="button" disabled>Clear All</button></div>
+            </section>
+
+            <section class="card help-card" aria-labelledby="help-title">
+              <div class="card-header"><h2 id="help-title" class="card-title">5. Download</h2><p class="card-text">Use a square or transparent logo, adjust padding and background, generate the package, copy the code into your site head, then upload files to your website root or <code>/favicons</code>.</p></div>
+            </section>
+          </div>
+        </aside>
+      </section>
+
+      <section class="card content" aria-labelledby="guide-title">
+        <h2 id="guide-title">Favicon Guide</h2>
+        <h3>What is a favicon?</h3><p>A favicon is the small website identity icon shown in browser tabs, bookmarks, search results and app shortcuts.</p>
+        <h3>Why favicons matter</h3><p>Favicons improve recognition, trust, installability and polish across browsers, mobile devices and PWAs.</p>
+        <h3>Recommended favicon sizes</h3><p>Use 16, 32, 48, 64, 96, 128, 180, 192, 256, 384 and 512 pixel PNG icons plus a multi-resolution ICO.</p>
+        <h3>How to add favicon to a website</h3><p>Upload the generated files to your site and paste the HTML snippet inside the document head.</p>
+        <h3>Cloudflare Pages favicon guide</h3><p>Place generated icons in your static output folder, usually `public/favicons` or the generated `dist/favicons` directory before deployment.</p>
+        <h3>Jekyll favicon guide</h3><p>Copy icons into your Jekyll site root or assets folder and include `jekyll-snippet.html` from your `_includes/head.html` file.</p>
+      </section>
+
+      <section class="card faq" aria-labelledby="faq-title">
+        <h2 id="faq-title">FAQ</h2>
+        <details data-accordion><summary>Are images uploaded to a server?</summary><p>No. Processing happens in your browser using canvas and static JavaScript.</p></details>
+        <details data-accordion><summary>Does this work offline?</summary><p>Yes. After the first successful load, the service worker caches the static app shell.</p></details>
+        <details data-accordion><summary>Can I deploy this on Cloudflare Pages?</summary><p>Yes. It is fully static. Use `npm run build` optionally and deploy `dist`.</p></details>
+        <details data-accordion><summary>Which formats are supported?</summary><p>PNG, JPG, JPEG, WEBP and SVG are supported when the current browser can decode them.</p></details>
+      </section>
+    </main>
+    <footer class="container site-footer">Built as a static privacy-first favicon generator. Uploaded images stay in the browser.</footer>
+    <div id="toastRegion" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="/assets/js/app.js"></script>
+  </body>
+</html>

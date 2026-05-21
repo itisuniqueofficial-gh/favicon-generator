@@ -1,0 +1,34 @@
+@media (max-width: 1024px) {
+  .tool-layout { grid-template-columns: 1fr; }
+  .sidebar-inner { position: static; }
+  .download-actions, .editor-grid, .control-grid { grid-template-columns: 1fr; }
+  .tool-sidebar { order: 2; }
+  .tool-main { order: 1; }
+  .header-grid { grid-template-columns: 1fr; }
+  .header-actions { display: grid; grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 720px) {
+  .app-shell, .container { width: min(100% - 20px, 1280px); }
+  .card { padding: 18px; }
+  .code-grid { grid-template-columns: 1fr; }
+  .download-actions { grid-template-columns: 1fr; }
+  .download-actions .wide { grid-column: auto; }
+  .card-title { font-size: 30px; }
+  .btn, .primary, .small-btn { width: 100%; }
+  .drop-zone { min-height: 180px; }
+  .section-head { display: grid; }
+  .header-actions { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 340px) {
+  body { font-size: 14px; }
+  .app-shell, .container { width: min(100% - 20px, 1280px); }
+  .card { padding: 14px; }
+  .preview-grid, .files-grid { grid-template-columns: 1fr; }
+  .brand-mark { width: 40px; height: 40px; }
+}
+
+@media (min-width: 1800px) {
+  .container, .app-shell { max-width: 1500px; }
+}
