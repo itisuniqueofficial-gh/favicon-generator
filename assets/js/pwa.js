@@ -13,7 +13,7 @@ export function initPwa() {
     install.hidden = true;
   });
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').then((registration) => {
+    navigator.serviceWorker.register('sw.js').then((registration) => {
       registration.addEventListener('updatefound', () => window.dispatchEvent(new CustomEvent('app-update')));
     }).catch(() => {});
   }

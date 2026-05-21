@@ -1,5 +1,5 @@
-const CACHE_NAME = 'static-favicon-generator-v2';
-const APP_SHELL = ['/', '/index.html', '/assets/css/style.css', '/assets/css/responsive.css', '/assets/js/app.js', '/assets/js/image-processor.js', '/assets/js/icon-generator.js', '/assets/js/zip-generator.js', '/assets/js/validators.js', '/assets/js/snippets.js', '/assets/js/pwa.js', '/assets/images/favicon.svg', '/assets/images/og-image.svg', '/manifest.json', '/site.webmanifest', '/offline.html'];
+const CACHE_NAME = 'static-favicon-generator-v3';
+const APP_SHELL = ['./', 'index.html', 'assets/css/style.css', 'assets/css/responsive.css', 'assets/js/app.js', 'assets/js/image-processor.js', 'assets/js/icon-generator.js', 'assets/js/zip-generator.js', 'assets/js/validators.js', 'assets/js/snippets.js', 'assets/js/pwa.js', 'assets/images/favicon.svg', 'assets/images/og-image.svg', 'manifest.json', 'site.webmanifest', 'offline.html'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)));
@@ -19,5 +19,5 @@ self.addEventListener('fetch', (event) => {
       caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
     }
     return response;
-  }).catch(() => caches.match('/offline.html'))));
+  }).catch(() => caches.match('offline.html'))));
 });
